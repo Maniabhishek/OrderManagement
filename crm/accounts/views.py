@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 
-def Home(request):
-    return render(request,'accounts/home.html')
+def Dashboard(request):
+    return render(request,'accounts/dashboard.html')
 
 def Products(request):
     return render(request,'accounts/products.html')
