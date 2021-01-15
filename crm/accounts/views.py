@@ -31,7 +31,7 @@ def Customer(request,pk_test):
 
 
 def createOrder(request,cust_id):
-    customer = Associates.objects.get(id=cust_id )
+    
     form = OrderForm()
     if request.method =='POST':
         # print(request.POST)
