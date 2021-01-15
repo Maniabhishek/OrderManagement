@@ -3,14 +3,14 @@ from django.db.models.fields import CharField
 
 # Create your models here.
 
-class Customer(models.Model):
+class Associates(models.Model):
     name = models.CharField(max_length=30 , null=True)
     phone = models.CharField(max_length=20, null=True)
     email = models.CharField(max_length=50, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     
     def __str__(self):
-        return f'customer name is {self.name}'
+        return self.name
 
 
 class Tag(models.Model):
@@ -40,12 +40,12 @@ class Product(models.Model):
 class Order(models.Model):
     STATUS = (
         ('pending','Pending'),
-        ('Out For deliver','Out For Delivery'),
+        ('Out For delivery','Out For Delivery'),
         ('Delivered','Delivered'),
     )
-    customer = models.ForeignKey(Customer,null=True,on_delete = models.SET_NULL)
+    customer = models.ForeignKey(Associates,null=True,on_delete = models.SET_NULL)
     products = models.ForeignKey(Product,null=True,on_delete = models.SET_NULL)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(choices=STATUS,max_length=200,null=True)
     def __str__(self):
-        return f'{ self.customer.name } ordered {self.products}'
+        return self.products.name
