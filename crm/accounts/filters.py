@@ -1,9 +1,14 @@
 from django.db.models import fields
-from django.db import django_filters
+import django_filters
+from django_filters import DateFilter , CharFilter
 from .models import *
 
 class OrderFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(lookup_expr='iexact')
+    start_date = DateFilter(field_name = "date_created",lookup_expr="gte")
+    end_date = DateFilter(field_name="date_created",lookup_expr="lte")
+    note = CharFilter(field_name="note",lookup_expr="icontains")
+    # name = django_filters.CharFilter(lookup_expr='iexact')
     class Meta:
         model = Order
         fields = '__all__'
+        exclude = ['customer','date_created']

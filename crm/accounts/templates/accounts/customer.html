@@ -33,8 +33,9 @@
 <div class="row">
     <div class="col">
         <div class="card card-body mt-3">
-            <form method="GET" action="">
-                <a class="btn btn-primary btn-sm" type="submit" href="">Search</a>
+            <form method="GET">
+                {{myFilter.form}}
+                <button class="btn btn-primary btn-sm" type="submit" >Search</button>
             </form>
         </div>
     </div>
@@ -46,7 +47,7 @@
             <table class="table" >
                 <tr>
                     <th>Product</th>
-                    <th>Category</th>
+                    <th>Note</th>
                     <th>Date Ordered</th>
                     <th>Status</th>
                     <th>Update</th>
@@ -55,7 +56,7 @@
                 {% for o in order %}
                     <tr>
                         <td>{{o.products}}</td>
-                        <td>{{o.products.category}}</td>
+                        <td>{{o.note}}</td>
                         <td>{{ o.date_created }}</td>
                         <td>{{o.status}}</td>
                         <td><a class="btn btn-sm btn-info" href="{% url 'update' o.id %}">Update</a></td>
