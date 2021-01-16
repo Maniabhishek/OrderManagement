@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.forms import inlineformset_factory #this library is responsible for creating multiple instances at one time 
 from .models import *
 from .forms import *
+from .filters import *
 # Create your views here.
 
 def Dashboard(request):
@@ -26,8 +27,11 @@ def Products(request):
 def Customer(request,pk_test):
     customer = Associates.objects.get(id=pk_test)
     order = customer.order_set.all()
+
+    myFilter = OrderFilter(request.GET,queryset=order)
+    order = myFilter.qs
     total_order = order.count()
-    context = {'customer':customer,'order':order,'total_order':total_order}
+    context = {'customer':customer,'order':order,'total_order':total_order,'myFilter':myFilter}
     return render(request,'accounts/customer.html',context)
 
 
