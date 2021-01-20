@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{% static 'css/loginStyle.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="sidenav">
+        <div class="login-main-text">
+           <h2>Application<br> Login Page</h2>
+           <p>Login or register from here to access.</p>
+        </div>
+     </div>
+     <div class="main">
+        <div class="col-md-6 col-sm-12">
+           <div class="login-form">
+              <form method="POST">
+                  {% csrf_token %}
+                 
+                 <div class="form-group">
+                    <label>Username</label><br>
+                    <input type="text" name="username" class="form-control" placeholder="UserName">
+                 </div>
+                 <div class="form-group">
+                    <label>Enter Password</label><br>
+                   
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                 </div>
+                 
+                 <button type="submit" class="btn btn-black">Login</button>
+                 <a href="{% url 'register' %}" class="btn btn-secondary">Register</a><br>
+                 {% for message in messages %}
+                 {{message}}
+                 {% endfor %}
+              </form>
+           </div>
+        </div>
+     </div>
+
+
+     <!-- <script>
+         var form_fields= document.getElementsByTagName('input')
+         form_fields[1].placeholder = 'User Name...'
+         form_fields[2].placeholder = 'Email...'
+         form_fields[3].placeholder = 'Password'
+         form_fields[4].placeholder = 'Confirm Password'
+
+
+
+     </script> -->
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</body>
+</html>

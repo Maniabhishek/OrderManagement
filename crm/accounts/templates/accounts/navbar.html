@@ -25,5 +25,8 @@
         </li>
         
       </ul>
+     
     </div>
+    <span class="mt-2" style="margin-right:20px;color: white; font-size: 18px;"><p>Hello , {{ request.user }}</p></span>
+    <span> <a class="btn btn-danger btn-sm" href="{% url 'logout' %}">Logut</a> </span>
   </nav>
